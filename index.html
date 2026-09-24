@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Hamdan | Personal Website</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:#050505;color:#f5f5f5;line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,90%);margin:auto}
+    header{
+      min-height:100vh;display:flex;align-items:center;
+      position:relative;overflow:hidden;
+      background:radial-gradient(circle at 80% 20%,#242424 0,#0b0b0b 30%,#050505 70%);
+    }
+    header:after{
+      content:"";position:absolute;width:420px;height:420px;border:1px solid #444;
+      border-radius:50%;right:-120px;bottom:-140px;opacity:.45;
+      box-shadow:0 0 0 35px #111,0 0 0 36px #333;
+    }
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:10;
+      background:rgba(5,5,5,.82);backdrop-filter:blur(12px);
+      border-bottom:1px solid #222;
+    }
+    nav .container{height:68px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:2px}
+    .logo span{color:#aaa}
+    .links{display:flex;gap:24px;font-size:14px;color:#bbb}
+    .links a:hover{color:#fff}
+    .hero{position:relative;z-index:1;padding-top:70px}
+    .tag{display:inline-block;border:1px solid #444;border-radius:999px;padding:7px 13px;color:#aaa;font-size:13px;margin-bottom:22px}
+    h1{font-size:clamp(48px,9vw,100px);line-height:.95;letter-spacing:-4px;max-width:900px}
+    h1 span{color:#888}
+    .hero p{max-width:650px;color:#aaa;font-size:19px;margin:28px 0}
+    .btn{
+      display:inline-block;padding:12px 20px;border:1px solid #777;border-radius:8px;
+      margin-right:10px;font-weight:700;transition:.2s
+    }
+    .btn:hover{background:#fff;color:#000}
+    .btn.dark{border-color:#292929;color:#999}
+    section{padding:100px 0;border-top:1px solid #161616}
+    .eyebrow{text-transform:uppercase;letter-spacing:3px;color:#777;font-size:12px;margin-bottom:12px}
+    h2{font-size:42px;margin-bottom:20px}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .about p{color:#aaa;font-size:17px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
+    .card{
+      background:#0d0d0d;border:1px solid #242424;border-radius:16px;padding:26px;
+      min-height:170px;transition:.2s
+    }
+    .card:hover{transform:translateY(-5px);border-color:#555}
+    .card .num{font-size:13px;color:#666;margin-bottom:22px}
+    .card h3{margin-bottom:8px}
+    .card p{color:#888;font-size:14px}
+    .goal{
+      display:flex;justify-content:space-between;align-items:center;gap:30px;
+      border:1px solid #292929;border-radius:20px;padding:35px;background:#0b0b0b
+    }
+    .goal strong{font-size:25px}
+    .goal p{color:#999;max-width:650px}
+    footer{padding:35px 0;color:#666;text-align:center;border-top:1px solid #161616}
+    @media(max-width:750px){
+      .links{display:none}
+      .about,.cards{grid-template-columns:1fr}
+      h1{letter-spacing:-2px}
+      .goal{display:block}
+      .goal .btn{margin-top:20px}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="logo" href="#home">MH<span>.</span></a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#interests">Interests</a>
+      <a href="#goals">Goals</a>
+    </div>
+  </div>
+</nav>
+
+<header id="home">
+  <div class="container hero">
+    <div class="tag">COMPUTER SCIENCE STUDENT • PAKISTAN</div>
+    <h1>MUHAMMAD<br><span>HAMDAN.</span></h1>
+    <p>
+      Class 11 computer science student, sports lover, and future
+      web developer & software engineer. I'm learning, building, and
+      working toward something bigger.
+    </p>
+    <a class="btn" href="#about">Explore My Story</a>
+    <a class="btn dark" href="#goals">My Goals ↓</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="eyebrow">01 / About me</div>
+    <h2>Still learning. Already building.</h2>
+    <div class="about">
+      <p>
+        My name is <strong>Muhammad Hamdan</strong>. I am from Pakistan and
+        currently studying in class 11 as a computer science student.
+        I don't have professional skills yet, but I'm actively learning
+        and improving step by step.
+      </p>
+      <p>
+        This website is my personal space on the web — a place to document
+        my journey, show what I learn, and eventually share the projects
+        I build as I grow into a web developer and software engineer.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="interests">
+  <div class="container">
+    <div class="eyebrow">02 / Interests</div>
+    <h2>Outside the code.</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Football</h3>
+        <p>A favorite sport and a great way to stay active and competitive.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Volleyball</h3>
+        <p>Teamwork, energy, and quick decisions — all on one court.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Cricket</h3>
+        <p>Another sport I enjoy, whether playing with friends or following the game.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="goals">
+  <div class="container">
+    <div class="eyebrow">03 / Future</div>
+    <h2>Where I'm going.</h2>
+    <div class="goal">
+      <div>
+        <strong>Web Developer → Software Engineer</strong>
+        <p>
+          My goal is to learn web development, create real projects,
+          build strong programming skills, and eventually become a
+          professional software engineer.
+        </p>
+      </div>
+      <a class="btn" href="#home">Back to top ↑</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Muhammad Hamdan • Built while learning.</div>
+</footer>
+
+</body>
+</html>
