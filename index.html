@@ -1,736 +1,833 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-  <meta name="google-site-verification" content="mkSNJUBbA5pdeyW61g6masVAzC6zGk2Z9yIoLWSGNPo" />  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Muhammad Hamdan | Developer Portfolio</title>    <style>  
-    *{  
-      box-sizing:border-box;  
-      margin:0;  
-      padding:0;  
-    }  
-  
-    html{  
-      scroll-behavior:smooth;  
-    }  
-  
-    body{  
-      font-family:Arial,Helvetica,sans-serif;  
-      background:#050505;  
-      color:#f5f5f5;  
-      line-height:1.6;  
-    }  
-  
-    a{  
-      color:inherit;  
-      text-decoration:none;  
-    }  
-  
-    .container{  
-      width:min(1100px,90%);  
-      margin:auto;  
-    }  
-  
-    /* ================= NAVBAR ================= */  
-  
-    nav{  
-      position:fixed;  
-      top:0;  
-      left:0;  
-      right:0;  
-      z-index:100;  
-      background:rgba(5,5,5,.82);  
-      backdrop-filter:blur(14px);  
-      border-bottom:1px solid #222;  
-    }  
-  
-    nav .container{  
-      height:68px;  
-      display:flex;  
-      align-items:center;  
-      justify-content:space-between;  
-    }  
-  
-    .logo{  
-      font-weight:800;  
-      font-size:20px;  
-      letter-spacing:2px;  
-    }  
-  
-    .logo span{  
-      color:#777;  
-    }  
-  
-    .links{  
-      display:flex;  
-      gap:24px;  
-      font-size:14px;  
-      color:#aaa;  
-    }  
-  
-    .links a{  
-      transition:.2s;  
-    }  
-  
-    .links a:hover{  
-      color:#fff;  
-    }  
-  
-    .menu-btn{  
-      display:none;  
-      background:none;  
-      border:1px solid #333;  
-      color:#fff;  
-      padding:8px 11px;  
-      border-radius:8px;  
-      font-size:18px;  
-      cursor:pointer;  
-    }  
-  
-    /* ================= HERO ================= */  
-  
-    header{  
-      min-height:100vh;  
-      display:flex;  
-      align-items:center;  
-      position:relative;  
-      overflow:hidden;  
-      background:  
-        radial-gradient(circle at 80% 20%,#242424 0,#0b0b0b 30%,#050505 70%);  
-    }  
-  
-    header:after{  
-      content:"";  
-      position:absolute;  
-      width:420px;  
-      height:420px;  
-      border:1px solid #444;  
-      border-radius:50%;  
-      right:-120px;  
-      bottom:-140px;  
-      opacity:.45;  
-      box-shadow:  
-        0 0 0 35px #111,  
-        0 0 0 36px #333;  
-    }  
-  
-    .hero{  
-      position:relative;  
-      z-index:1;  
-      padding-top:70px;  
-    }  
-  
-    .tag{  
-      display:inline-block;  
-      border:1px solid #444;  
-      border-radius:999px;  
-      padding:7px 13px;  
-      color:#aaa;  
-      font-size:13px;  
-      margin-bottom:22px;  
-    }  
-  
-    h1{  
-      font-size:clamp(48px,9vw,100px);  
-      line-height:.95;  
-      letter-spacing:-4px;  
-      max-width:900px;  
-    }  
-  
-    h1 span{  
-      color:#888;  
-    }  
-  
-    .hero p{  
-      max-width:680px;  
-      color:#aaa;  
-      font-size:19px;  
-      margin:28px 0;  
-    }  
-  
-    .buttons{  
-      display:flex;  
-      flex-wrap:wrap;  
-      gap:10px;  
-    }  
-  
-    .btn{  
-      display:inline-block;  
-      padding:12px 20px;  
-      border:1px solid #777;  
-      border-radius:8px;  
-      font-weight:700;  
-      transition:.2s;  
-    }  
-  
-    .btn:hover{  
-      background:#fff;  
-      color:#000;  
-      transform:translateY(-2px);  
-    }  
-  
-    .btn.dark{  
-      border-color:#292929;  
-      color:#999;  
-    }  
-  
-    /* ================= GENERAL SECTIONS ================= */  
-  
-    section{  
-      padding:100px 0;  
-      border-top:1px solid #161616;  
-    }  
-  
-    .eyebrow{  
-      text-transform:uppercase;  
-      letter-spacing:3px;  
-      color:#777;  
-      font-size:12px;  
-      margin-bottom:12px;  
-    }  
-  
-    h2{  
-      font-size:42px;  
-      margin-bottom:20px;  
-      letter-spacing:-1px;  
-    }  
-  
-    /* ================= ABOUT ================= */  
-  
-    .about{  
-      display:grid;  
-      grid-template-columns:1fr 1fr;  
-      gap:50px;  
-    }  
-  
-    .about p{  
-      color:#aaa;  
-      font-size:17px;  
-    }  
-  
-    /* ================= SKILLS ================= */  
-  
-    .skills{  
-      display:grid;  
-      grid-template-columns:repeat(4,1fr);  
-      gap:16px;  
-      margin-top:35px;  
-    }  
-  
-    .skill{  
-      background:#0d0d0d;  
-      border:1px solid #242424;  
-      border-radius:16px;  
-      padding:24px;  
-      transition:.2s;  
-    }  
-  
-    .skill:hover{  
-      transform:translateY(-5px);  
-      border-color:#555;  
-    }  
-  
-    .skill-number{  
-      color:#666;  
-      font-size:13px;  
-      margin-bottom:20px;  
-    }  
-  
-    .skill h3{  
-      margin-bottom:7px;  
-    }  
-  
-    .skill p{  
-      color:#888;  
-      font-size:14px;  
-    }  
-  
-    /* ================= INTERESTS ================= */  
-  
-    .cards{  
-      display:grid;  
-      grid-template-columns:repeat(3,1fr);  
-      gap:16px;  
-      margin-top:35px;  
-    }  
-  
-    .card{  
-      background:#0d0d0d;  
-      border:1px solid #242424;  
-      border-radius:16px;  
-      padding:26px;  
-      min-height:170px;  
-      transition:.2s;  
-    }  
-  
-    .card:hover{  
-      transform:translateY(-5px);  
-      border-color:#555;  
-    }  
-  
-    .card .num{  
-      font-size:13px;  
-      color:#666;  
-      margin-bottom:22px;  
-    }  
-  
-    .card h3{  
-      margin-bottom:8px;  
-    }  
-  
-    .card p{  
-      color:#888;  
-      font-size:14px;  
-    }  
-  
-    /* ================= PROJECTS ================= */  
-  
-    .projects{  
-      display:grid;  
-      grid-template-columns:repeat(2,1fr);  
-      gap:18px;  
-      margin-top:35px;  
-    }  
-  
-    .project{  
-      background:#0d0d0d;  
-      border:1px solid #242424;  
-      border-radius:18px;  
-      padding:28px;  
-      transition:.2s;  
-    }  
-  
-    .project:hover{  
-      transform:translateY(-5px);  
-      border-color:#555;  
-    }  
-  
-    .project-label{  
-      color:#666;  
-      font-size:12px;  
-      text-transform:uppercase;  
-      letter-spacing:2px;  
-      margin-bottom:14px;  
-    }  
-  
-    .project h3{  
-      font-size:24px;  
-      margin-bottom:10px;  
-    }  
-  
-    .project p{  
-      color:#999;  
-      margin-bottom:20px;  
-    }  
-  
-    .project-link{  
-      display:inline-block;  
-      color:#fff;  
-      border-bottom:1px solid #555;  
-      padding-bottom:3px;  
-      font-size:14px;  
-    }  
-  
-    .project-link:hover{  
-      border-color:#fff;  
-    }  
-  
-    /* ================= GOALS ================= */  
-  
-    .goal{  
-      display:flex;  
-      justify-content:space-between;  
-      align-items:center;  
-      gap:30px;  
-      border:1px solid #292929;  
-      border-radius:20px;  
-      padding:35px;  
-      background:#0b0b0b;  
-    }  
-  
-    .goal strong{  
-      font-size:25px;  
-    }  
-  
-    .goal p{  
-      color:#999;  
-      max-width:650px;  
-      margin-top:8px;  
-    }  
-  
-    /* ================= CONTACT ================= */  
-  
-    .contact-box{  
-      border:1px solid #292929;  
-      border-radius:20px;  
-      padding:40px;  
-      background:#0b0b0b;  
-      text-align:center;  
-    }  
-  
-    .contact-box p{  
-      color:#999;  
-      max-width:600px;  
-      margin:0 auto 25px;  
-    }  
-  
-    /* ================= FOOTER ================= */  
-  
-    footer{  
-      padding:35px 0;  
-      color:#666;  
-      text-align:center;  
-      border-top:1px solid #161616;  
-    }  
-  
-    /* ================= MOBILE ================= */  
-  
-    @media(max-width:850px){  
-  
-      .skills{  
-        grid-template-columns:repeat(2,1fr);  
-      }  
-  
-    }  
-  
-    @media(max-width:750px){  
-  
-      .links{  
-        display:none;  
-        position:absolute;  
-        top:68px;  
-        left:0;  
-        right:0;  
-        background:#080808;  
-        border-bottom:1px solid #222;  
-        padding:20px;  
-        flex-direction:column;  
-        gap:18px;  
-      }  
-  
-      .links.active{  
-        display:flex;  
-      }  
-  
-      .menu-btn{  
-        display:block;  
-      }  
-  
-      .about,  
-      .cards,  
-      .projects{  
-        grid-template-columns:1fr;  
-      }  
-  
-      .skills{  
-        grid-template-columns:1fr;  
-      }  
-  
-      h1{  
-        letter-spacing:-2px;  
-      }  
-  
-      h2{  
-        font-size:34px;  
-      }  
-  
-      .hero p{  
-        font-size:17px;  
-      }  
-  
-      .goal{  
-        display:block;  
-      }  
-  
-      .goal .btn{  
-        margin-top:20px;  
-      }  
-  
-      .contact-box{  
-        padding:28px 20px;  
-      }  
-  
-    }  
-  
-  </style>  </head>  <body>  <!-- ================= NAVBAR ================= -->  <nav>  
-  <div class="container">  <a class="logo" href="#home">  
-  MH<span>.</span>  
-</a>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="mkSNJUBbA5pdeyW61g6masVAzC6zGk2Z9yIoLWSGNPo" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="links" id="navLinks">  
-  <a href="#about">About</a>  
-  <a href="#skills">Skills</a>  
-  <a href="#interests">Interests</a>  
-  <a href="#projects">Projects</a>  
-  <a href="#goals">Goals</a>  
-  <a href="#contact">Contact</a>  
-</div>  
+  <title>Muhammad Hamdan | Developer Portfolio</title>
 
-<button class="menu-btn" onclick="toggleMenu()">  
-  ☰  
-</button>
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-  </div>  
-</nav>  <!-- ================= HERO ================= -->  <header id="home">    <div class="container hero">  <div class="tag">  
-  COMPUTER SCIENCE STUDENT • PAKISTAN  
-</div>  
+    html{
+      scroll-behavior:smooth;
+    }
 
-<h1>  
-  MUHAMMAD<br>  
-  <span>HAMDAN.</span>  
-</h1>  
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:#050505;
+      color:#f5f5f5;
+      line-height:1.6;
+    }
 
-<p>  
-  Class 11 computer science student, sports lover, and future  
-  web developer & software engineer. I'm learning, building,  
-  and working toward something bigger.  
-</p>  
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-<div class="buttons">  
+    .container{
+      width:min(1100px,90%);
+      margin:auto;
+    }
 
-  <a class="btn" href="#projects">  
-    View My Projects  
-  </a>  
+    /* ================= NAVBAR ================= */
 
-  <a class="btn dark" href="#about">  
-    Explore My Story ↓  
-  </a>  
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:100;
+      background:rgba(5,5,5,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid #222;
+    }
 
-</div>
+    nav .container{
+      height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
 
-  </div>  </header>  <!-- ================= ABOUT ================= -->  <section id="about">    <div class="container">  <div class="eyebrow">  
-  01 / About me  
-</div>  
+    .logo{
+      font-weight:800;
+      font-size:20px;
+      letter-spacing:2px;
+    }
 
-<h2>  
-  Still learning. Already building.  
-</h2>  
+    .logo span{
+      color:#777;
+    }
 
-<div class="about">  
+    .links{
+      display:flex;
+      gap:24px;
+      font-size:14px;
+      color:#aaa;
+    }
 
-  <p>  
-    My name is <strong>Muhammad Hamdan</strong>. I am from Pakistan  
-    and currently studying in class 11 as a computer science student.  
-    I don't have professional skills yet, but I'm actively learning  
-    and improving step by step.  
-  </p>  
+    .links a{
+      transition:.2s;
+    }
 
-  <p>  
-    This website is my personal space on the web — a place to document  
-    my journey, show what I learn, and eventually share the projects  
-    I build as I grow into a web developer and software engineer.  
-  </p>  
+    .links a:hover{
+      color:#fff;
+    }
 
-</div>
+    .menu-btn{
+      display:none;
+      background:none;
+      border:1px solid #333;
+      color:#fff;
+      padding:8px 11px;
+      border-radius:8px;
+      font-size:18px;
+      cursor:pointer;
+    }
 
-  </div>  </section>  <!-- ================= SKILLS ================= -->  <section id="skills">    <div class="container">  <div class="eyebrow">  
-  02 / Skills  
-</div>  
+    /* ================= HERO ================= */
 
-<h2>  
-  What I'm learning.  
-</h2>  
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 80% 20%,#242424 0,#0b0b0b 30%,#050505 70%);
+    }
 
-<div class="skills">  
+    header:after{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border:1px solid #444;
+      border-radius:50%;
+      right:-120px;
+      bottom:-140px;
+      opacity:.45;
+      box-shadow:
+        0 0 0 35px #111,
+        0 0 0 36px #333;
+    }
 
-  <div class="skill">  
-    <div class="skill-number">01</div>  
-    <h3>HTML</h3>  
-    <p>Learning how to structure modern websites.</p>  
-  </div>  
+    .hero{
+      position:relative;
+      z-index:1;
+      padding-top:70px;
+    }
 
-  <div class="skill">  
-    <div class="skill-number">02</div>  
-    <h3>CSS</h3>  
-    <p>Learning layouts, responsive design, and styling.</p>  
-  </div>  
+    .tag{
+      display:inline-block;
+      border:1px solid #444;
+      border-radius:999px;
+      padding:7px 13px;
+      color:#aaa;
+      font-size:13px;
+      margin-bottom:22px;
+    }
 
-  <div class="skill">  
-    <div class="skill-number">03</div>  
-    <h3>C Programming</h3>  
-    <p>Building my programming fundamentals step by step.</p>  
-  </div>  
+    h1{
+      font-size:clamp(48px,9vw,100px);
+      line-height:.95;
+      letter-spacing:-4px;
+      max-width:900px;
+    }
 
-  <div class="skill">  
-    <div class="skill-number">04</div>  
-    <h3>GitHub</h3>  
-    <p>Learning how to store, manage, and share my projects.</p>  
-  </div>  
+    h1 span{
+      color:#888;
+    }
 
-</div>
+    .hero p{
+      max-width:680px;
+      color:#aaa;
+      font-size:19px;
+      margin:28px 0;
+    }
 
-  </div>  </section>  <!-- ================= INTERESTS ================= -->  <section id="interests">    <div class="container">  <div class="eyebrow">  
-  03 / Interests  
-</div>  
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
 
-<h2>  
-  Outside the code.  
-</h2>  
+    .btn{
+      display:inline-block;
+      padding:12px 20px;
+      border:1px solid #777;
+      border-radius:8px;
+      font-weight:700;
+      transition:.2s;
+    }
 
-<div class="cards">  
+    .btn:hover{
+      background:#fff;
+      color:#000;
+      transform:translateY(-2px);
+    }
 
-  <div class="card">  
-    <div class="num">01</div>  
-    <h3>Football</h3>  
-    <p>  
-      A favorite sport and a great way to stay active and competitive.  
-    </p>  
-  </div>  
+    .btn.dark{
+      border-color:#292929;
+      color:#999;
+    }
 
-  <div class="card">  
-    <div class="num">02</div>  
-    <h3>Volleyball</h3>  
-    <p>  
-      Teamwork, energy, and quick decisions — all on one court.  
-    </p>  
-  </div>  
+    /* ================= GENERAL SECTIONS ================= */
 
-  <div class="card">  
-    <div class="num">03</div>  
-    <h3>Cricket</h3>  
-    <p>  
-      Another sport I enjoy, whether playing with friends or following  
-      the game.  
-    </p>  
-  </div>  
+    section{
+      padding:100px 0;
+      border-top:1px solid #161616;
+    }
 
-</div>
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:3px;
+      color:#777;
+      font-size:12px;
+      margin-bottom:12px;
+    }
 
-  </div>  </section>  <!-- ================= PROJECTS ================= -->  <section id="projects">    <div class="container">  <div class="eyebrow">  
-  04 / Projects  
-</div>  
+    h2{
+      font-size:42px;
+      margin-bottom:20px;
+      letter-spacing:-1px;
+    }
 
-<h2>  
-  What I've built.  
-</h2>  
+    /* ================= ABOUT ================= */
 
-<div class="projects">  
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+    }
 
-  <div class="project">  
+    .about p{
+      color:#aaa;
+      font-size:17px;
+    }
 
-    <div class="project-label">  
-      Personal Website  
-    </div>  
+    /* ================= SKILLS ================= */
 
-    <h3>  
-      Muhammad Hamdan Portfolio  
-    </h3>  
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:35px;
+    }
 
-    <p>  
-      My personal website built while learning web development.  
-      This project represents the beginning of my journey into  
-      building websites.  
-    </p>  
+    .skill{
+      background:#0d0d0d;
+      border:1px solid #242424;
+      border-radius:16px;
+      padding:24px;
+      transition:.2s;
+    }
 
-    <a  
-      class="project-link"  
-      href="https://hamdanmohs1n465-hub.github.io/"  
-      target="_blank"  
-    >  
-      Visit Website →  
-    </a>  
+    .skill:hover{
+      transform:translateY(-5px);
+      border-color:#555;
+    }
 
-  </div>  
+    .skill-number{
+      color:#666;
+      font-size:13px;
+      margin-bottom:20px;
+    }
 
+    .skill h3{
+      margin-bottom:7px;
+    }
 
-  <div class="project">  
+    .skill p{
+      color:#888;
+      font-size:14px;
+    }
 
-    <div class="project-label">  
-      Coming Soon  
-    </div>  
+    /* ================= INTERESTS ================= */
 
-    <h3>  
-      Future Project  
-    </h3>  
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:35px;
+    }
 
-    <p>  
-      More websites and programming projects will be added here  
-      as I continue learning and building.  
-    </p>  
+    .card{
+      background:#0d0d0d;
+      border:1px solid #242424;
+      border-radius:16px;
+      padding:26px;
+      min-height:170px;
+      transition:.2s;
+    }
 
-    <span class="project-link">  
-      In progress...  
-    </span>  
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#555;
+    }
 
-  </div>  
+    .card .num{
+      font-size:13px;
+      color:#666;
+      margin-bottom:22px;
+    }
 
-</div>
+    .card h3{
+      margin-bottom:8px;
+    }
 
-  </div>  </section>  <!-- ================= GOALS ================= -->  <section id="goals">    <div class="container">  <div class="eyebrow">  
-  05 / Future  
-</div>  
+    .card p{
+      color:#888;
+      font-size:14px;
+    }
 
-<h2>  
-  Where I'm going.  
-</h2>  
+    /* ================= PROJECTS ================= */
 
-<div class="goal">  
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:35px;
+    }
 
-  <div>  
+    .project{
+      background:#0d0d0d;
+      border:1px solid #242424;
+      border-radius:18px;
+      padding:28px;
+      transition:.2s;
+    }
 
-    <strong>  
-      Web Developer → Software Engineer  
-    </strong>  
+    .project:hover{
+      transform:translateY(-5px);
+      border-color:#555;
+    }
 
-    <p>  
-      My goal is to learn web development, create real projects,  
-      build strong programming skills, and eventually become a  
-      professional software engineer.  
-    </p>  
+    .project-label{
+      color:#666;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:14px;
+    }
 
-  </div>  
+    .project h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
 
-  <a class="btn" href="#home">  
-    Back to top ↑  
-  </a>  
+    .project p{
+      color:#999;
+      margin-bottom:20px;
+    }
 
-</div>
+    .project-link{
+      display:inline-block;
+      color:#fff;
+      border-bottom:1px solid #555;
+      padding-bottom:3px;
+      font-size:14px;
+    }
 
-  </div>  </section>  <!-- ================= CONTACT ================= -->  <section id="contact">    <div class="container">  <div class="eyebrow">  
-  06 / Contact  
-</div>  
+    .project-link:hover{
+      border-color:#fff;
+    }
 
-<h2>  
-  Let's connect.  
-</h2>  
+    /* ================= GOALS ================= */
 
-<div class="contact-box">  
+    .goal{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
+      border:1px solid #292929;
+      border-radius:20px;
+      padding:35px;
+      background:#0b0b0b;
+    }
 
-  <p>  
-    I'm learning, building, and sharing my progress.  
-    You can find my projects and development journey on GitHub.  
-  </p>  
+    .goal strong{
+      font-size:25px;
+    }
 
-  <a  
-    class="btn"  
-    href="https://github.com/hamdanmohsin"  
-    target="_blank"  
-  >  
-    Visit My GitHub →  
-  </a>  
+    .goal p{
+      color:#999;
+      max-width:650px;
+      margin-top:8px;
+    }
 
-</div>
+    /* ================= CONTACT ================= */
 
-  </div>  </section>  <!-- ================= FOOTER ================= -->  <footer>    <div class="container">  
-    © 2026 Muhammad Hamdan • Built while learning.  
-  </div>  </footer>  <!-- ================= JAVASCRIPT ================= -->  <script>  
-  
-  function toggleMenu(){  
-  
-    const navLinks = document.getElementById("navLinks");  
-  
-    navLinks.classList.toggle("active");  
-  
-  }  
-  
-  document.querySelectorAll(".links a").forEach(function(link){  
-  
-    link.addEventListener("click", function(){  
-  
-      document.getElementById("navLinks").classList.remove("active");  
-  
-    });  
-  
-  });  
-  
-</script>  </body>  
+    .contact-box{
+      border:1px solid #292929;
+      border-radius:20px;
+      padding:40px;
+      background:#0b0b0b;
+      text-align:center;
+    }
+
+    .contact-box p{
+      color:#999;
+      max-width:600px;
+      margin:0 auto 25px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      padding:35px 0;
+      color:#666;
+      text-align:center;
+      border-top:1px solid #161616;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width:850px){
+
+      .skills{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+    }
+
+    @media(max-width:750px){
+
+      .links{
+        display:none;
+        position:absolute;
+        top:68px;
+        left:0;
+        right:0;
+        background:#080808;
+        border-bottom:1px solid #222;
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+      }
+
+      .links.active{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .about,
+      .cards,
+      .projects{
+        grid-template-columns:1fr;
+      }
+
+      .skills{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        letter-spacing:-2px;
+      }
+
+      h2{
+        font-size:34px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .goal{
+        display:block;
+      }
+
+      .goal .btn{
+        margin-top:20px;
+      }
+
+      .contact-box{
+        padding:28px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <div class="container">
+
+      <a class="logo" href="#home">
+        MH<span>.</span>
+      </a>
+
+      <div class="links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#interests">Interests</a>
+        <a href="#projects">Projects</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+
+  <header id="home">
+
+    <div class="container hero">
+
+      <div class="tag">
+        COMPUTER SCIENCE STUDENT • PAKISTAN
+      </div>
+
+      <h1>
+        MUHAMMAD<br>
+        <span>HAMDAN.</span>
+      </h1>
+
+      <p>
+        Class 11 computer science student, sports lover, and future
+        web developer & software engineer. I'm learning, building,
+        and working toward something bigger.
+      </p>
+
+      <div class="buttons">
+
+        <a class="btn" href="#projects">
+          View My Projects
+        </a>
+
+        <a class="btn dark" href="#about">
+          Explore My Story ↓
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        01 / About me
+      </div>
+
+      <h2>
+        Still learning. Already building.
+      </h2>
+
+      <div class="about">
+
+        <p>
+          My name is <strong>Muhammad Hamdan</strong>. I am from Pakistan
+          and currently studying in class 11 as a computer science student.
+          I don't have professional skills yet, but I'm actively learning
+          and improving step by step.
+        </p>
+
+        <p>
+          This website is my personal space on the web — a place to document
+          my journey, show what I learn, and eventually share the projects
+          I build as I grow into a web developer and software engineer.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        02 / Skills
+      </div>
+
+      <h2>
+        What I'm learning.
+      </h2>
+
+      <div class="skills">
+
+        <div class="skill">
+          <div class="skill-number">01</div>
+          <h3>HTML</h3>
+          <p>Learning how to structure modern websites.</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-number">02</div>
+          <h3>CSS</h3>
+          <p>Learning layouts, responsive design, and styling.</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-number">03</div>
+          <h3>C Programming</h3>
+          <p>Building my programming fundamentals step by step.</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-number">04</div>
+          <h3>GitHub</h3>
+          <p>Learning how to store, manage, and share my projects.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= INTERESTS ================= -->
+
+  <section id="interests">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        03 / Interests
+      </div>
+
+      <h2>
+        Outside the code.
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="num">01</div>
+          <h3>Football</h3>
+          <p>
+            A favorite sport and a great way to stay active and competitive.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="num">02</div>
+          <h3>Volleyball</h3>
+          <p>
+            Teamwork, energy, and quick decisions — all on one court.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="num">03</div>
+          <h3>Cricket</h3>
+          <p>
+            Another sport I enjoy, whether playing with friends or following
+            the game.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        04 / Projects
+      </div>
+
+      <h2>
+        What I've built.
+      </h2>
+
+      <div class="projects">
+
+        <div class="project">
+
+          <div class="project-label">
+            Personal Website
+          </div>
+
+          <h3>
+            Muhammad Hamdan Portfolio
+          </h3>
+
+          <p>
+            My personal website built while learning web development.
+            This project represents the beginning of my journey into
+            building websites.
+          </p>
+
+          <a
+            class="project-link"
+            href="https://hamdanmohsin.github.io/"
+            target="_blank"
+          >
+            Visit Website →
+          </a>
+
+        </div>
+
+        <div class="project">
+
+          <div class="project-label">
+            Coming Soon
+          </div>
+
+          <h3>
+            Future Project
+          </h3>
+
+          <p>
+            More websites and programming projects will be added here
+            as I continue learning and building.
+          </p>
+
+          <span class="project-link">
+            In progress...
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= GOALS ================= -->
+
+  <section id="goals">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        05 / Future
+      </div>
+
+      <h2>
+        Where I'm going.
+      </h2>
+
+      <div class="goal">
+
+        <div>
+
+          <strong>
+            Web Developer → Software Engineer
+          </strong>
+
+          <p>
+            My goal is to learn web development, create real projects,
+            build strong programming skills, and eventually become a
+            professional software engineer.
+          </p>
+
+        </div>
+
+        <a class="btn" href="#home">
+          Back to top ↑
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        06 / Contact
+      </div>
+
+      <h2>
+        Let's connect.
+      </h2>
+
+      <div class="contact-box">
+
+        <p>
+          I'm learning, building, and sharing my progress.
+          You can find my projects and development journey on GitHub.
+        </p>
+
+        <a
+          class="btn"
+          href="https://github.com/hamdanmohsin"
+          target="_blank"
+        >
+          Visit My GitHub →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="container">
+      © 2026 Muhammad Hamdan • Built while learning.
+    </div>
+
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    function toggleMenu(){
+
+      const navLinks = document.getElementById("navLinks");
+
+      navLinks.classList.toggle("active");
+
+    }
+
+    document.querySelectorAll(".links a").forEach(function(link){
+
+      link.addEventListener("click", function(){
+
+        document.getElementById("navLinks").classList.remove("active");
+
+      });
+
+    });
+
+  </script>
+
+</body>
   </html>
